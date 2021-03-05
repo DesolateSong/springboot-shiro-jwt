@@ -1,0 +1,43 @@
+server:
+  servlet:
+    context-path: /spb
+  port: 8087
+
+logging:
+  file:
+    name: ./log/jeeboot.log
+  level:
+    org.springframework: error
+    com.suxs: debug
+
+shiro:
+  enabled: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/badge?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 20
+      min-idle: 20
+      max-active: 200
+      max-wait: 60000
+      test-while-idle: true
+      test-on-return: false
+      test-on-borrow: false
+      min-evictable-idle-time-millis: 30000
+      time-between-eviction-runs-millis: 60000
+      filters: stat
+      connection-properties: 'druid.stat.slowSqlMillis=5000'
+      validation-query: select 'x'
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

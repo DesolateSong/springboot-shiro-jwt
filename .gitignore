@@ -1,0 +1,6 @@
+.idea/
+*.yml
+
+*.log
+*.log.*.gz
+target/
